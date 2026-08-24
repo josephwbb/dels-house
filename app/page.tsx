@@ -103,28 +103,28 @@ export default function Home() {
           {/* Desktop navigation */}
           <div className="hidden items-center gap-8 text-[0.72rem] font-medium uppercase tracking-[0.12em] md:flex">
             <a
-              href="/#about"
+              href="/about"
               className="transition-opacity hover:opacity-50"
             >
               About
             </a>
 
             <a
-              href="/#day"
+              href="/dels-house"
               className="transition-opacity hover:opacity-50"
             >
               Del&apos;s House
             </a>
 
             <a
-              href="/#pricing"
+              href="/pricing"
               className="transition-opacity hover:opacity-50"
             >
               Pricing
             </a>
 
             <a
-              href="/#hours"
+              href="/hours"
               className="transition-opacity hover:opacity-50"
             >
               Working Hours
@@ -184,10 +184,10 @@ export default function Home() {
       <div className="flex flex-col">
 
         {[
-          ["About", "/#about"],
-          ["Del's House", "/#day"],
-          ["Pricing", "/#pricing"],
-          ["Working Hours", "/#hours"],
+          ["About", "/about"],
+          ["Del's House", "/dels-house"],
+          ["Pricing", "/pricing"],
+          ["Working Hours", "/hours"],
           ["Testimonials", "/testimonials"],
         ].map(([label, href], index) => (
           <a
@@ -578,115 +578,233 @@ export default function Home() {
       </section>
 
 
-      {/* =====================================================
-          ABOUT
-      ====================================================== */}
+  <section
+  id="about"
+  className="bg-[#DDE5D7] px-6 py-24 md:px-10 md:py-36"
+>
+  <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-2 md:items-center md:gap-16">
 
-      <section
-        id="about"
-        className="bg-[#DDE5D7] px-6 py-24 md:px-10 md:py-36"
-      >
+    <div className="mx-auto w-[78%] overflow-hidden md:mx-0 md:w-full">
+      <img
+        src="/images/adele.jpg"
+        alt="Adele Taylor"
+        className="aspect-[4/5] w-full object-cover"
+      />
+    </div>
 
-      <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-2 md:items-center md:gap-16">
+    <div className="md:pl-8 lg:pl-14">
 
-  <div className="order-2 mx-auto w-[78%] overflow-hidden md:order-1 md:mx-0 md:w-full">
-    <img
-      src="/images/adele.jpg"
-      alt="Adele Taylor"
-      className="aspect-[4/5] w-full object-cover"
-    />
-  </div>
+      {/* Heading + mobile badges */}
+      <div className="flex items-start justify-between gap-4">
 
-  <div className="order-1 md:order-2 md:pl-8 lg:pl-14"> 
-            <h2
-              className="
-                max-w-xl
-                text-[clamp(3rem,6vw,6rem)]
-                font-bold
-                leading-[0.88]
-                tracking-[-0.065em]
-                text-[#241C2B]
-              "
-            >
-              My name&apos;s
-              <br />
-              Adele.
-            </h2>
+        <h2
+          className="
+            max-w-xl
+            text-[clamp(3rem,6vw,6rem)]
+            font-bold
+            leading-[0.88]
+            tracking-[-0.065em]
+            text-[#241C2B]
+          "
+        >
+          My name&apos;s
+          <br />
+          Adele.
+        </h2>
 
-
+        {/* Mobile credentials */}
+        <div className="grid grid-cols-2 gap-1.5 pt-1 md:hidden">
+          {[
+            { title: "OFSTED", subtitle: "Registered" },
+            { title: "DBS", subtitle: "Checked" },
+            { title: "EYFS", subtitle: "Qualified" },
+            { title: "FIRST AID", subtitle: "Trained" },
+          ].map((badge) => (
             <div
-              className="
-                mt-8
-                max-w-xl
-                space-y-5
-                text-[1.08rem]
-                font-semibold
-                leading-[1.75]
-                tracking-[-0.015em]
-                text-[#4F5B52]
-                md:text-[1.18rem]
-                md:leading-[1.7]
-              "
-            >
-
-              <p>
-                I&apos;ve been a childminder for over 20 years, and I absolutely
-                love what I do.
-              </p>
-
-              <p>
-                Del&apos;s House is a place where children can feel happy, safe
-                and completely themselves. I love watching their little
-                personalities grow, helping them learn through play and giving
-                them plenty of opportunities to explore the world around them.
-              </p>
-
-              <p>
-                We&apos;re out and about most days, whether that&apos;s meeting
-                friends at toddler groups, exploring the local community or
-                heading off on an exciting adventure during the holidays.
-              </p>
-
-              <p>
-                I&apos;m also lucky to work alongside a lovely group of local
-                childminders, so the children have the chance to make lots of
-                friendships and become part of a really close community.
-              </p>
-
-            </div>
-
-
-            <a
-              href="/about"
+              key={badge.title}
               className="
                 group
-                mt-10
-                inline-flex
+                relative
+                flex
+                h-[54px]
+                w-[72px]
+                flex-col
                 items-center
-                border-b
-                border-[#241C2B]/40
-                pb-2
-                text-xs
-                font-semibold
-                uppercase
-                tracking-[0.12em]
-                transition-colors
-                hover:border-[#241C2B]
+                justify-center
+                rounded-xl
+                border
+                border-[#241C2B]/20
+                bg-[#DDE5D7]/80
+                p-1
+                text-center
+                shadow-sm
+                backdrop-blur-sm
               "
             >
-              Learn more about me
-
-              <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">
-                <Arrow />
+              <div className="absolute inset-0.5 rounded-[10px] border border-[#241C2B]/10 pointer-events-none" />
+              <svg 
+                className="mb-0.5 h-3 w-3 text-[#241C2B]/70" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor" 
+                strokeWidth="2.5"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <span className="text-[0.48rem] font-bold uppercase tracking-wider text-[#241C2B] leading-none">
+                {badge.title}
               </span>
-            </a>
-
-          </div>
-
+              <span className="text-[0.42rem] font-semibold uppercase tracking-tight text-[#4F5B52] leading-tight mt-0.5">
+                {badge.subtitle}
+              </span>
+            </div>
+          ))}
         </div>
 
-      </section>
+      </div>
 
+      <div
+        className="
+          mt-8
+          max-w-xl
+          space-y-5
+          text-[1.08rem]
+          font-semibold
+          leading-[1.75]
+          tracking-[-0.015em]
+          text-[#4F5B52]
+          md:text-[1.18rem]
+          md:leading-[1.7]
+        "
+      >
+        <p>
+          I&apos;ve been a childminder for over 20 years, and I absolutely
+          love what I do.
+        </p>
+
+        <p>
+          Del&apos;s House is a place where children can feel happy, safe
+          and completely themselves. I love watching their little
+          personalities grow, helping them learn through play and giving
+          them plenty of opportunities to explore the world around them.
+        </p>
+
+        <p>
+          We&apos;re out and about most days, whether that&apos;s meeting
+          friends at toddler groups, exploring the local community or
+          heading off on an exciting adventure during the holidays.
+        </p>
+
+        <p>
+          I&apos;m also lucky to work alongside a lovely group of local
+          childminders, so the children have the chance to make lots of
+          friendships and become part of a really close community.
+        </p>
+      </div>
+
+      <div className="mt-10 flex flex-col items-start gap-8">
+
+        <a
+          href="/about"
+          className="
+            group
+            inline-flex
+            w-fit
+            items-center
+            border-b
+            border-[#241C2B]/40
+            pb-2
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.12em]
+            transition-colors
+            hover:border-[#241C2B]
+          "
+        >
+          Learn more about me
+
+          <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">
+            <Arrow />
+          </span>
+        </a>
+
+        {/* Desktop credentials */}
+        <div className="hidden grid-cols-2 gap-4 sm:grid-cols-4 md:grid">
+          {[
+            {
+              title: "OFSTED",
+              subtitle: "Registered",
+            },
+            {
+              title: "DBS",
+              subtitle: "Checked",
+            },
+            {
+              title: "EYFS",
+              subtitle: "Qualified",
+            },
+            {
+              title: "FIRST AID",
+              subtitle: "Trained",
+            },
+          ].map((badge) => (
+            <div
+              key={badge.title}
+              className="
+                group
+                relative
+                flex
+                h-[96px]
+                min-w-[125px]
+                flex-col
+                items-center
+                justify-center
+                rounded-2xl
+                border
+                border-[#241C2B]/20
+                bg-white/40
+                p-4
+                text-center
+                shadow-sm
+                backdrop-blur-md
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-[#241C2B]/40
+                hover:bg-white/60
+                hover:shadow-md
+              "
+            >
+              {/* Inner refined frame outline */}
+              <div className="absolute inset-1 rounded-[12px] border border-[#241C2B]/10 pointer-events-none transition-colors group-hover:border-[#241C2B]/20" />
+
+              <svg 
+                className="mb-1.5 h-4 w-4 text-[#241C2B]/80 transition-transform duration-300 group-hover:scale-110" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor" 
+                strokeWidth="2"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+
+              <span className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-[#241C2B]">
+                {badge.title}
+              </span>
+
+              <span className="mt-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-[#4F5B52]">
+                {badge.subtitle}
+              </span>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* =====================================================
           DEL'S HOUSE
