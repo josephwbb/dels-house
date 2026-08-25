@@ -1616,9 +1616,7 @@ export default function Home() {
               Facebook
             </a>
 
-            <a href="#" className="hover:text-white">
-              Privacy
-            </a>
+          
 
           </div>
 
