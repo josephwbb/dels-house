@@ -578,11 +578,11 @@ export default function Home() {
       </section>
 
 
-  <section
+ <section
   id="about"
   className="bg-[#DDE5D7] px-6 py-24 md:px-10 md:py-36"
 >
-  <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-2 md:items-center md:gap-16">
+  <div className="mx-auto flex flex-col-reverse max-w-[1400px] gap-12 md:grid md:grid-cols-2 md:items-center md:gap-16">
 
     <div className="mx-auto w-[78%] overflow-hidden md:mx-0 md:w-full">
       <img
@@ -906,7 +906,7 @@ export default function Home() {
 
             <div className="group overflow-hidden">
               <img
-                src="/images/setting-5.jpg"
+                src="/images/dels-house/dels-house-03.jpg"
                 alt="The setting at Del's House"
                 className="
                   aspect-[4/3]
@@ -922,7 +922,7 @@ export default function Home() {
 
             <div className="group overflow-hidden md:mt-16">
               <img
-                src="/images/setting.jpg"
+                src="/images/dels-house/dels-house-20.jpg"
                 alt="Inside Del's House"
                 className="
                   aspect-[4/5]

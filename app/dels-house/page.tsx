@@ -10,6 +10,16 @@ const photos = Array.from({ length: 20 }, (_, index) => ({
   )}.jpg?v=2`,
 }));
 
+const settingNumbers = ["03", "06", "07", "17", "20"];
+
+const settingPhotos = photos.filter((photo) =>
+  settingNumbers.includes(photo.number)
+);
+
+const activityPhotos = photos.filter(
+  (photo) => !settingNumbers.includes(photo.number)
+);
+
 function Arrow() {
   return (
     <span
@@ -24,6 +34,9 @@ function Arrow() {
 
 export default function DelsHousePage() {
   const [activePhoto, setActivePhoto] = useState(1);
+  const [expandedSettingPhoto, setExpandedSettingPhoto] = useState<string | null>(
+    null
+  );
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#F4F0E8] text-[#241C2B]">
@@ -127,6 +140,206 @@ export default function DelsHousePage() {
 
 
       {/* =====================================================
+          THE SETTING
+      ====================================================== */}
+
+      <section className="pb-28 md:pb-40">
+
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+
+          <div className="flex items-end justify-between border-t border-[#241C2B]/15 pt-5">
+
+            <div>
+              <p className="text-[clamp(2.8rem,5vw,5.5rem)] font-bold leading-[0.88] tracking-[-0.075em] text-[#687F6A]">
+                The setting
+              </p>
+
+              <p className="mt-4 max-w-lg text-xs font-medium leading-5 text-[#68606A] md:text-sm">
+                A closer look at the warm, welcoming spaces that make
+                Del&apos;s House feel like home.
+              </p>
+            </div>
+
+          </div>
+
+
+          {/* Main setting image */}
+
+          <button
+            type="button"
+            onClick={() => setExpandedSettingPhoto(settingPhotos[0].src)}
+            className="mt-8 block w-full text-left md:mt-10"
+            aria-label="Expand setting photo"
+          >
+            <figure
+              className="
+                group
+                relative
+                h-[52vh]
+                max-h-[680px]
+                min-h-[360px]
+                overflow-hidden
+                bg-[#E7D9E8]
+                shadow-[0_18px_45px_rgba(36,28,43,0.10)]
+                transition-all
+                duration-500
+                hover:-translate-y-1
+                hover:shadow-[0_24px_55px_rgba(36,28,43,0.16)]
+                md:h-[64vh]
+              "
+            >
+
+              <img
+                src={settingPhotos[0].src}
+                alt="Del's House setting"
+                className="
+                  block
+                  h-full
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  ease-out
+                  group-hover:scale-[1.025]
+                "
+              />
+
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#241C2B]/25 via-transparent to-transparent opacity-60" />
+
+              <div className="pointer-events-none absolute bottom-5 right-5 flex h-10 w-10 items-center justify-center rounded-full border border-[#F4F0E8]/70 bg-[#F4F0E8]/85 text-[#241C2B] opacity-0 shadow-[0_6px_18px_rgba(36,28,43,0.12)] backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                <span className="text-lg leading-none">+</span>
+              </div>
+
+            </figure>
+          </button>
+
+
+          {/* Supporting setting images */}
+
+          <div className="mt-5 grid grid-cols-2 gap-5 md:grid-cols-4 md:gap-7">
+
+            {settingPhotos.slice(1).map((photo) => (
+
+              <button
+                type="button"
+                key={photo.number}
+                onClick={() => setExpandedSettingPhoto(photo.src)}
+                className="block w-full text-left"
+                aria-label="Expand setting photo"
+              >
+                <figure
+                  className="
+                    group
+                    relative
+                    h-[30vh]
+                    min-h-[220px]
+                    overflow-hidden
+                    bg-[#E7D9E8]
+                    shadow-[0_14px_35px_rgba(36,28,43,0.09)]
+                    transition-all
+                    duration-500
+                    hover:-translate-y-1
+                    hover:shadow-[0_20px_45px_rgba(36,28,43,0.14)]
+                    md:h-[34vh]
+                  "
+                >
+
+                  <img
+                    src={photo.src}
+                    alt="Del's House setting"
+                    className="
+                      block
+                      h-full
+                      w-full
+                      object-cover
+                      transition-transform
+                      duration-700
+                      ease-out
+                      group-hover:scale-[1.025]
+                    "
+                  />
+
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#241C2B]/20 via-transparent to-transparent opacity-60" />
+
+                  <div className="pointer-events-none absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#F4F0E8]/70 bg-[#F4F0E8]/85 text-[#241C2B] opacity-0 shadow-[0_5px_15px_rgba(36,28,43,0.10)] backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="text-base leading-none">+</span>
+                  </div>
+
+                </figure>
+              </button>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          SETTING LIGHTBOX
+      ====================================================== */}
+
+      {expandedSettingPhoto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#241C2B]/90 p-4 backdrop-blur-sm md:p-8"
+          onClick={() => setExpandedSettingPhoto(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Expanded setting photo"
+        >
+
+          <button
+            type="button"
+            onClick={() => setExpandedSettingPhoto(null)}
+            className="
+              absolute
+              right-5
+              top-5
+              z-10
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-white/25
+              bg-[#F4F0E8]/90
+              text-2xl
+              font-light
+              leading-none
+              text-[#241C2B]
+              shadow-[0_8px_25px_rgba(0,0,0,0.18)]
+              transition-transform
+              duration-300
+              hover:rotate-90
+            "
+            aria-label="Close expanded photo"
+          >
+            ×
+          </button>
+
+          <img
+            src={expandedSettingPhoto}
+            alt="Del's House setting"
+            className="
+              max-h-[92vh]
+              max-w-[96vw]
+              object-contain
+              shadow-[0_25px_80px_rgba(0,0,0,0.35)]
+              md:max-h-[88vh]
+              md:max-w-[92vw]
+            "
+            onClick={(event) => event.stopPropagation()}
+          />
+
+        </div>
+      )}
+
+
+      {/* =====================================================
           HORIZONTAL GALLERY
       ====================================================== */}
 
@@ -181,17 +394,29 @@ export default function DelsHousePage() {
           onScroll={(event) => {
             const element = event.currentTarget;
 
+            const maxScroll =
+              element.scrollWidth - element.clientWidth;
+
             const progress =
-              element.scrollLeft /
-              (element.scrollWidth - element.clientWidth);
+              maxScroll > 0
+                ? element.scrollLeft / maxScroll
+                : 0;
 
-            const index = Math.round(progress * (photos.length - 1)) + 1;
+            const index =
+              Math.round(
+                progress * (activityPhotos.length - 1)
+              ) + 1;
 
-            setActivePhoto(Math.max(1, Math.min(20, index)));
+            setActivePhoto(
+              Math.max(
+                1,
+                Math.min(activityPhotos.length, index)
+              )
+            );
           }}
         >
 
-          {photos.map((photo) => (
+          {activityPhotos.map((photo) => (
 
             <figure
               key={photo.number}
@@ -275,14 +500,17 @@ export default function DelsHousePage() {
             <div
               className="h-px bg-[#241C2B]/45 transition-all duration-300"
               style={{
-                width: `${(activePhoto / photos.length) * 100}%`,
+                width: `${
+                  (activePhoto / activityPhotos.length) * 100
+                }%`,
               }}
             />
 
           </div>
 
           <p className="min-w-[55px] text-right text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[#68606A]">
-            {String(activePhoto).padStart(2, "0")} / 20
+            {String(activePhoto).padStart(2, "0")} /{" "}
+            {activityPhotos.length}
           </p>
 
         </div>
